@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISBON CLOTHING | Premium Shoes & Suits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1C1C1C;      /* Deep Charcoal */
+            --secondary-color: #5D4037;    /* Rich Brown */
+            --accent-color: #D4AF37;       /* Antique Gold */
+            --light-bg: #F8F4E6;           /* Warm Cream */
+            --medium-bg: #E0E0E0;          /* Soft Gray */
+            --text-color: #333333;         /* Dark Text */
+            --light-text: #F8F4E6;         /* Light Text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: padding 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            display: block;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-top: -5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+        }
+
+        .contact-info a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+            padding: 5px;
+            color: var(--light-text);
+            background: none;
+            border: none;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 1002;
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--light-text);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .mobile-nav-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mobile-nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .mobile-nav-link i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Contact Info */
+        .mobile-contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .mobile-contact-info a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 15px;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mobile-contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(28,28,28,0.8), rgba(28,28,28,0.8)), url('images/bg1.jpeg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        /* Collections Section */
+        .collections {
+            padding: 100px 0;
+            background-color: var(--light-bg);
+            position: relative;
+            z-index: 1;
+            margin-top: 100vh;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .collection-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid var(--medium-bg);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .collection-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .collection-info {
+            padding: 25px;
+        }
+
+        .collection-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .collection-info p {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--medium-bg);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            height: 500px;
+            background: url('images/bg1.jpeg') center/cover no-repeat;
+            border-radius: 8px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid var(--medium-bg);
+        }
+
+        .service-card:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .service-card:hover i {
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        .service-card:hover p {
+            color: var(--medium-bg);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--medium-bg);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-bg);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info-box {
+            flex: 1;
+        }
+
+        .contact-info-box h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+
+        .contact-item p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--medium-bg);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--medium-bg);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--medium-bg);
+            font-size: 0.9rem;
+        }
+
+        /* Return to Top Button */
+        .return-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .return-to-top:hover {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .contact-info {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-img {
+                height: 300px;
+            }
+            
+            .mobile-nav {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/Blue Modern Technology Logo _20241011_020922_0000.png" alt="LISBON CLOTHING Logo">
+                <div class="logo-text">
+                    LISBON
+                    <span>CLOTHING</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="contact-info">
+                <i class="fas fa-phone"></i> <a href="tel:0708035693">0708035693</a>
+                <a href="https://wa.me/254708035693" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <h3 class="mobile-nav-title">Menu</h3>
+        <a href="#home" class="mobile-nav-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="#collections" class="mobile-nav-link">
+            <i class="fas fa-tshirt"></i> Collections
+        </a>
+        <a href="#about" class="mobile-nav-link">
+            <i class="fas fa-info-circle"></i> About
+        </a>
+        <a href="#services" class="mobile-nav-link">
+            <i class="fas fa-concierge-bell"></i> Services
+        </a>
+        <a href="#contact" class="mobile-nav-link">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+        
+        <div class="mobile-contact-info">
+            <a href="tel:0708035693"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/254708035693" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Timeless Quality, Classic Style</h1>
+            <p>Premium shoes and suits crafted from natural materials for men, women, and children</p>
+            <a href="collections.html" class="btn">Explore Collections</a>
+            <a href="#contact" class="btn btn-outline">Book Consultation</a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Collections</h2>
+                <p>Discover our premium selection of classic shoes and suits crafted from the finest natural materials</p>
+            </div>
+            
+            <div class="collection-grid">
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/menk2.jpg');"></div>
+                    <div class="collection-info">
+                        <h3>Men's Shoes</h3>
+                        <p>Classic leather shoes including Oxfords, Loafers, and Boots crafted with premium materials</p>
+                        <a href="collections.html#mens-shoes" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/ladyshoe.jpeg');"></div>
+                    <div class="collection-info">
+                        <h3>Women's Shoes</h3>
+                        <p>Elegant and comfortable footwear designed for style and durability</p>
+                        <a href="collections.html#womens-shoes" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/kid1.avif');"></div>
+                    <div class="collection-info">
+                        <h3>Kids' Shoes</h3>
+                        <p>Durable and comfortable shoes for children that support growing feet</p>
+                        <a href="collections.html#kids-shoes" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/suit1.jpg');"></div>
+                    <div class="collection-info">
+                        <h3>Men's Suits</h3>
+                        <p>Premium suits crafted from natural fabrics for a perfect fit and timeless style</p>
+                        <a href="collections.html#mens-suits" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/women\ clothes.webp');"></div>
+                    <div class="collection-info">
+                        <h3>Women's Clothes</h3>
+                        <p>Stylish and professional suits designed for the modern woman</p>
+                        <a href="collections.html#womens-suits" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card">
+                    <div class="collection-img" style="background-image: url('images/acc1.jpg');"></div>
+                    <div class="collection-info">
+                        <h3>Accessories</h3>
+                        <p>Complete your look with our selection of premium accessories</p>
+                        <a href="collections.html#accessories" class="btn">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About LISBON CLOTHING</h2>
+                <p>Craftsmanship, quality, and timeless style since our establishment</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img"></div>
+                <div class="about-text">
+                    <h3>Our Heritage</h3>
+                    <p>At LISBON CLOTHING, we believe in the enduring value of quality craftsmanship. For over two decades, we have been dedicated to creating premium shoes and suits that stand the test of time.</p>
+                    <p>Our commitment to using only the finest natural materials - from full-grain leathers to breathable wool and linen - ensures that every piece we create offers exceptional comfort, durability, and style.</p>
+                    <p>Each item in our collection is meticulously crafted by skilled artisans who share our passion for excellence. We combine traditional techniques with modern innovations to create footwear and apparel that honors classic design while meeting the demands of contemporary life.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive services to enhance your LISBON CLOTHING experience</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Shoe Care & Repair</h3>
+                    <p>Professional shoe care services to maintain the quality and extend the life of your footwear</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Suit Tailoring</h3>
+                    <p>Expert tailoring services to ensure the perfect fit for all our suits and formal wear</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Style Consultation</h3>
+                    <p>Personalized styling advice to help you create the perfect wardrobe for any occasion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for inquiries, appointments, or to learn more about our collections</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-box">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Fashion Avenue, Nairobi, Kenya</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>0708035693</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <p>WhatsApp: 0708035693</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@lisbonclothing.com</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Mon-Fri: 9am - 6pm<br>Sat: 10am - 4pm<br>Sun: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LISBON CLOTHING</h3>
+                    <p>Premium shoes and suits crafted from natural materials for timeless style and exceptional quality.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="collections.html">Men's Shoes</a></li>
+                        <li><a href="collections.html">Women's Shoes</a></li>
+                        <li><a href="collections.html">Kids' Shoes</a></li>
+                        <li><a href="collections.html">Men's Suits</a></li>
+                        <li><a href="collections.html">Women's Suits</a></li>
+                        <li><a href="collections.html">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new collections and special offers.</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LISBON CLOTHING. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Return to Top Button -->
+    <button id="returnToTop" class="return-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="images/imgl.png"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.add('active');
+        });
+
+        // Close mobile navigation
+        document.getElementById('mobileNavClose').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.remove('active');
+        });
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Handle links to collections page
+        document.querySelectorAll('a[href^="collections.html"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // If we're on the homepage and the link is just to collections.html, let it navigate normally
+                if (this.getAttribute('href') === 'collections.html') {
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                // For links with hash (like collections.html#mens-shoes), navigate to the page
+                window.location.href = this.getAttribute('href');
+            });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We will contact you soon at ${email} or ${phone}.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Newsletter Form Submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Here you would normally send the email to a server
+            alert(`Thank you for subscribing with email: ${email}. You will receive our newsletter soon!`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Hero fade effect on scroll
+        const hero = document.querySelector('.hero');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroHeight = hero.offsetHeight;
+            const opacity = 1 - Math.min(scrolled / heroHeight, 1);
+            hero.style.opacity = opacity;
+        });
+
+        // Return to top button
+        const returnToTopButton = document.getElementById('returnToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                returnToTopButton.style.display = 'flex';
+            } else {
+                returnToTopButton.style.display = 'none';
+            }
+        });
+        
+        returnToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+            } else {
+                header.style.padding = '20px 0';
+            }
+        });
+    </script>
+</body>
+</html>
